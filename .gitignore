@@ -1,3 +1,17 @@
 __pycache__/
+*.pys
 *.sqlite3
+
+# dependencies
+node_modules/
+
+# dotenv
 .env
+
+# build
+dist/
+build/
+
+# system files
+.DS_Store
+*.log
