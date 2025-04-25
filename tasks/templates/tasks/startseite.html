@@ -1,22 +1,75 @@
 <! DOCTYPE html>
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>ToDo-App</title>
+    <title> 📝 ToDo-App</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+            background-color:rgb(72, 212, 247)
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .status {
+            color: red;
+        }
+        .status.nicht {
+            color: red;
+        }
+        .button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .bearbeiten {
+            background-color:rgb(83, 245, 88);
+            color: white;
+            margin-right: 5px;
+        }
+        .loeschen {
+            background-color:rgb(243, 46, 32);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Aufgabenübersicht</h1>
+    <h1>📝 Deine Aufgaben</h1>
+
     <ul>
         {% for aufgabe in aufgaben %}
             <li>
                 <strong>{{ aufgabe.titel }}</strong><br>
                 {{ aufgabe.beschreibung }}<br>
                 {% if aufgabe.erledigt %}
-                    <span style="color: green;">Erledigt</span>
+                    <span class="status">✅ Erledigt</span>
                 {% else %}
-                    <span style="color: red;">Nicht erledigt</span>
+                    <span class="status nicht">❌ Nicht erledigt</span>
                 {% endif %}
-                <a href="{% url 'aufgabe_bearbeiten' aufgabe.pk %}">Bearbeiten</a> |
-                <a href="{% url 'aufgabe_loeschen' aufgabe.pk %}">Löschen</a>
+                <br><br>
+                <a href="{% url 'aufgabe_bearbeiten' aufgabe.pk %}">
+                    <button class="button bearbeiten">✏️ Bearbeiten</button>
+                </a>
+                <a href="{% url 'aufgabe_loeschen' aufgabe.pk %}">
+                    <button class="button loeschen">🗑️ Löschen</button>
+                </a>
             </li>
         {% empty %}
             <li>Keine Aufgaben vorhanden.</li>
