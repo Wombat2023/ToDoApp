@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Aufgabe
 
-def home(request):
-    return render(request, 'tasks/home.html')
-# Create your views here.
+
+def startseite(request):
+    aufgaben = Aufgabe.objects.all()
+    return render(request, 'tasks/startseite.html', {'aufgaben': aufgaben})

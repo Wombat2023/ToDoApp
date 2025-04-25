@@ -1,0 +1,24 @@
+<! DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo-App</title>
+</head>
+<body>
+    <h1>Aufgabenübersicht</h1>
+    <ul>
+        {% for aufgabe in aufgaben %}
+            <li>
+                <strong>{{ aufgabe.titel }}</strong><br>
+                {{ aufgabe.beschreibung }}<br>
+                {% if aufgabe.erledigt %}
+                    <span style="color: green;">Erledigt</span>
+                {% else %}
+                    <span style="color: red;">Nicht erledigt</span>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Keine Aufgaben vorhanden.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
